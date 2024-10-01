@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>belajar.html</title>
+</head>
+<body>
+    <br>
+    <input type="number" id="nominal" placeholder="Nominal Isi Pulsa"><br>
+
+    <input type="radio" name="provider" value="Telkomsel" id="telkomsel"> Telkomsel 
+    <input type="radio" name="provider" value="Indosat" id="indosat"> Indosat 
+    <input type="radio" name="provider" value="XL" id="xl"> XL<br> 
+
+    <button onclick="hitungBiaya()">Biaya</button>
+    <p id="hasil"></p><br>
+
+    <script>
+        function hitungBiaya() {
+            // Ambil nilai nominal isi pulsa
+            let nominal = parseFloat(document.getElementById("nominal").value);
+
+            // Inisialisasi diskon
+            let diskon = 0;
+            let provider = '';
+
+            // Cek provider yang dipilih dan set diskon
+            if (document.getElementById("telkomsel").checked) {
+                diskon = 0.10; // Diskon 10% untuk Telkomsel
+                provider = "Telkomsel";
+            } else if (document.getElementById("indosat").checked) {
+                diskon = 0.05; // Diskon 5% untuk Indosat
+                provider = "Indosat";
+            } else if (document.getElementById("xl").checked) {
+                diskon = 0.02; // Diskon 2% untuk XL
+                provider = "XL";
+            }
+
+            // Hitung total setelah diskon
+            let total = nominal - (nominal * diskon);
+
+            // Tampilkan hasil menggunakan alert
+            alert("Diskon " + (diskon * 100) + "%, Biaya: " + total.toFixed(2));
+        }
+    </script>
+</body>
+</html>
+                   
